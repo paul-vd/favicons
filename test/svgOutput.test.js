@@ -34,3 +34,20 @@ test("should generate svg favicon", async () => {
 
   await expect(result).toMatchFaviconsSnapshot();
 });
+
+test("should generate svg as a android icon", async () => {
+  expect.assertions(1);
+
+  const result = await favicons(logo_svg, {
+    icons: {
+      favicons: false,
+      android: ["android-chrome.svg"],
+      appleIcon: false,
+      appleStartup: false,
+      windows: false,
+      yandex: false,
+    },
+  });
+
+  await expect(result).toMatchFaviconsSnapshot();
+});
